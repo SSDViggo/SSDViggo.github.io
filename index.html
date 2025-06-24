@@ -4,35 +4,49 @@
   <meta charset="UTF-8">
   <title>你的名字 | 個人首頁</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-  <header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="about">
     <h1>你的名字</h1>
-    <p>研究領域 | 技術 | 學歷</p>
+    <p>簡短介紹詞，如研究方向或目前身份</p>
   </header>
 
-  <section id="about">
-    <h2>關於我</h2>
-    <p>簡單自我介紹、就讀學校、研究興趣、目前的學術目標等。</p>
-  </section>
-
   <section id="projects">
-    <h2>專案與研究</h2>
+    <h2>Projects</h2>
     <ul>
-      <li><strong>研究題目一：</strong> 描述 + <a href="#">連結</a></li>
-      <li><strong>Side project：</strong> GitHub link</li>
+      <li><strong>專案標題 1：</strong> 簡介… <a href="#">[連結]</a></li>
+      <li><strong>專案標題 2：</strong> 簡介… <a href="#">[連結]</a></li>
     </ul>
   </section>
 
+  <section id="cv">
+    <h2>CV</h2>
+    <p>你可以附上 <a href="cv.pdf" target="_blank">CV PDF 下載連結</a>，或改成文字介紹。</p>
+  </section>
+
   <section id="contact">
-    <h2>聯絡方式</h2>
+    <h2>Contact</h2>
     <p>Email: your@email.com</p>
-    <p><a href="https://github.com/SSDViggo">GitHub</a> | <a href="#">LinkedIn</a></p>
+    <p>
+      <a href="https://github.com/yourusername" target="_blank">GitHub</a> |
+      <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+    </p>
   </section>
 
   <footer>
     <p>© 2025 你的名字</p>
   </footer>
+
 </body>
 </html>
