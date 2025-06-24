@@ -7,7 +7,7 @@ body {
   margin: auto;
   padding: 1rem;
   background: url('../images/arknights_bg3.jpg');
-  color: #fafafa;
+  color: rgb(250, 250, 250);
 }
 
 nav {
@@ -38,7 +38,9 @@ nav a {
 }
 
 section {
-  margin-top: 2rem;
+  background: rgba(0, 0, 0, 0.5); /* 半透明黑色 */
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 footer {
@@ -47,4 +49,19 @@ footer {
   padding: 1rem;
   font-size: 0.9rem;
   color: #777;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-top: 6px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
 }
