@@ -4,19 +4,25 @@
   <meta charset="UTF-8">
   <title>江宇綸 | 個人首頁</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 外部樣式表 -->
   <link rel="stylesheet" href="./css/styles.css">
+
+  <!-- 頁面淡入動畫 -->
   <style>
-    /* 初始淡入樣式 */
     body {
       opacity: 0;
       transition: opacity 1.2s ease-in-out;
       will-change: opacity;
     }
+    body.loaded {
+      opacity: 1;
+    }
   </style>
 </head>
-<body class="fade-body">
 
-  <!-- ======== 導覽列 Navigation Bar ======== -->
+<body class="fade-body">
+  <!-- ========= 導覽列 Navigation Bar ========= -->
   <nav>
     <ul>
       <li><a href="#about">About</a></li>
@@ -26,17 +32,21 @@
     </ul>
   </nav>
 
-  <!-- ======== Hero 區塊（開場動畫背景） ======== -->
+  <!-- ========= Hero 區塊（首頁主視覺） ========= -->
   <header class="hero">
     <div class="hero-content">
       <h1>江宇綸的網站</h1>
+      <!-- 動態打字文字 -->
       <h2 class="typewriter-text"></h2>
+      <!-- 滑動按鈕 -->
       <a href="#main" class="scroll-btn">↓ 滑動看更多</a>
     </div>
   </header>
 
-  <!-- ======== 主內容區（Projects / CV / Contact） ======== -->
+  <!-- ========= 主內容區 Main Section ========= -->
   <main id="main" class="container">
+
+    <!-- ===== Projects 區塊 ===== -->
     <section id="projects">
       <h2>Projects</h2>
       <ul>
@@ -45,6 +55,7 @@
       </ul>
     </section>
 
+    <!-- ===== CV 區塊 ===== -->
     <section id="cv">
       <h2>CV</h2>
       <p>
@@ -54,6 +65,7 @@
       </p>
     </section>
 
+    <!-- ===== Contact 區塊 ===== -->
     <section id="contact">
       <h2>Contact</h2>
       <p>Email: viggo101378@email.com</p>
@@ -64,57 +76,60 @@
     </section>
   </main>
 
-  <!-- ======== 頁尾 Footer ======== -->
+  <!-- ========= 頁尾 Footer ========= -->
   <footer>
     <p>© 2025 SSDViggo</p>
   </footer>
 
+  <!-- ========= 淡入動畫載入 JS ========= -->
   <script>
-  window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-  });
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
   </script>
+
+  <!-- ========= 打字動畫 JS ========= -->
   <script>
-  const texts = [
-    "我是資工系學生",
-    "曾經有一隻鴿子說過: 古菇顧",
-    "你剛剛看了一段沒有意義的文字",
-    "手機不充電--就會沒電",
-    "我爸媽是同一天結婚的",
-    "如果你一天省下買一杯奶茶的錢，十天後你可以買十杯",
-  ];
-  const el = document.querySelector(".typewriter-text");
+    const phrases = [
+      "我是資工系學生",
+      "曾經有一隻鴿子說過: 古菇顧",
+      "你剛剛看了一段沒有意義的文字",
+      "手機不充電--就會沒電",
+      "我爸媽是同一天結婚的",
+      "如果你一天省下買一杯奶茶的錢，十天後你可以買十杯",
+    ];
 
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
+    const el = document.querySelector(".typewriter-text");
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-  function type() {
-    const currentPhrase = phrases[phraseIndex];
-    const visibleText = currentPhrase.slice(0, charIndex);
-    el.textContent = visibleText;
+    function type() {
+      const currentPhrase = phrases[phraseIndex];
+      const visibleText = currentPhrase.slice(0, charIndex);
+      el.textContent = visibleText;
 
-    if (!isDeleting && charIndex < currentPhrase.length) {
-      charIndex++;
-      setTimeout(type, 100); // 打字速度
-    } else if (isDeleting && charIndex > 0) {
-      charIndex--;
-      setTimeout(type, 50); // 刪字速度
-    } else {
-      if (!isDeleting) {
-        setTimeout(() => {
-          isDeleting = true;
-          type();
-        }, 1200); // 停一會再刪
+      if (!isDeleting && charIndex < currentPhrase.length) {
+        charIndex++;
+        setTimeout(type, 100); // 打字速度
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(type, 50); // 刪字速度
       } else {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        setTimeout(type, 400); // 換句停一下
+        if (!isDeleting) {
+          setTimeout(() => {
+            isDeleting = true;
+            type();
+          }, 1200); // 顯示完後停頓
+        } else {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(type, 400); // 換句子前停頓
+        }
       }
     }
-  }
 
-  type();
+    type();
   </script>
 
 </body>
