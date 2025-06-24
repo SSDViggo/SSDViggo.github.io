@@ -30,7 +30,7 @@
   <header class="hero">
     <div class="hero-content">
       <h1>江宇綸</h1>
-      <p>更新進場動畫</p>
+      <h2 class="typewriter-text"></h2>
       <a href="#main" class="scroll-btn">↓ 滑動看更多</a>
     </div>
   </header>
@@ -73,6 +73,41 @@
   window.addEventListener('load', () => {
     document.body.classList.add('loaded');
   });
+  </script>
+  <script>
+  const texts = [
+    "我是資工系學生",
+    "喜歡動漫與寫 code",
+    "目標是成為研究人員"
+  ];
+  const textElement = document.querySelector(".typewriter-text");
+  let i = 0;
+
+  function typeNextText() {
+    const text = texts[i];
+    textElement.textContent = "";               // 清空內容
+    textElement.classList.remove("typing");     // 重設動畫
+
+    // 打字邏輯
+    let j = 0;
+    function typeChar() {
+      if (j <= text.length) {
+        textElement.textContent = text.slice(0, j);
+        j++;
+        setTimeout(typeChar, 100);
+      } else {
+        // 等待一段時間再進入下一句
+        setTimeout(() => {
+          i = (i + 1) % texts.length;
+          typeNextText();
+        }, 1500);
+      }
+    }
+
+    typeChar();
+  }
+
+  typeNextText();
   </script>
 
 </body>

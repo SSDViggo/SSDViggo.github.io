@@ -138,3 +138,24 @@ footer {
 }
 
 
+/* ========= 打字動畫樣式 ========= */
+.typewriter-text {
+  font-size: 1.5rem;
+  white-space: nowrap;
+  border-right: 2px solid rgba(255,255,255,0.75);
+  overflow: hidden;
+  width: 0;
+  animation: typing 2s steps(20, end) forwards, blink-caret 0.75s step-end infinite;
+}
+
+/* 打字動畫：將寬度從 0 擴展 */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* 光標閃爍效果 */
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: rgba(255,255,255,0.75); }
+}
