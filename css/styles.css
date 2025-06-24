@@ -118,7 +118,7 @@ footer {
   display: inline-block;
   padding: 6px 12px;
   margin-top: 6px;
-  background-color: #007bff;        /* 藍色背景 */
+  background-color: #022b56;        /* 藍色背景 */
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
@@ -126,7 +126,7 @@ footer {
 }
 
 .btn:hover {
-  background-color: #0056b3;        /* 深藍 hover 效果 */
+  background-color: #0662c5;        /* 深藍 hover 效果 */
 }
 
 .container {
@@ -159,4 +159,14 @@ footer {
 @keyframes blink-caret {
   0%, 100% { border-color: transparent; }
   50% { border-color: rgba(255,255,255,0.75); }
+}
+
+.typewriter-text {
+  font-size: 1.5rem;
+  white-space: nowrap;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  overflow: hidden;
+  letter-spacing: 1px;
+  min-height: 1.5em;
+  animation: blink-caret 0.75s step-end infinite;
 }
