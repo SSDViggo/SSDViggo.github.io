@@ -1,7 +1,7 @@
 /* ========= 字體載入 ========= */
 @font-face {
   font-family: 'Iansui';
-  src: url('../webfonts/Cubic_11_1.100_R.ttf') format('truetype'); /* 自訂字體路徑 */
+  src: url('../webfonts/Iansui-Regular.ttf') format('truetype'); /* 自訂字體路徑 */
   font-weight: normal;
   font-style: normal;
 }
