@@ -153,13 +153,6 @@ footer {
   min-height: 1.6em;
 }
 
-
-/* 光標閃爍動畫 */
-@keyframes blink-caret {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-
 .caret {
   display: inline-block;
   width: 2px;
@@ -168,4 +161,9 @@ footer {
   animation: blink-caret 0.75s step-end infinite;
   vertical-align: bottom;
   margin-left: 2px;
+}
+
+@keyframes blink-caret {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
 }
