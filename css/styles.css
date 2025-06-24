@@ -1,10 +1,9 @@
 @font-face {
   font-family: 'Iansui';
-  src: url('webfonts\Iansui-Regular.ttf') format('truetype');
+  src: url('../webfonts/Iansui-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
-
 
 /* ========= 基本設定 ========= */
 body {
