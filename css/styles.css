@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Cubic11';
+  font-family: 'Iansui';
   src: url('webfonts\Iansui-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
@@ -69,7 +69,7 @@ nav a {
 }
 
 .hero h1 {
-  font-family: 'Cubic11', sans-serif;
+  font-family: 'Iansui', sans-serif;
   font-size: 3rem;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
