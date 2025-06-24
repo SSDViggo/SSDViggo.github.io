@@ -81,33 +81,34 @@
     "目標是成為研究人員"
   ];
   const textElement = document.querySelector(".typewriter-text");
-  let i = 0;
 
-  function typeNextText() {
-    const text = texts[i];
-    textElement.textContent = "";               // 清空內容
-    textElement.classList.remove("typing");     // 重設動畫
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-    // 打字邏輯
-    let j = 0;
-    function typeChar() {
-      if (j <= text.length) {
-        textElement.textContent = text.slice(0, j);
-        j++;
-        setTimeout(typeChar, 100);
-      } else {
-        // 等待一段時間再進入下一句
-        setTimeout(() => {
-          i = (i + 1) % texts.length;
-          typeNextText();
-        }, 1500);
+  function typeLoop() {
+    const currentText = texts[textIndex];
+    
+    // 更新目前要顯示的內容
+    let visibleText = currentText.slice(0, charIndex);
+    textElement.textContent = visibleText;
+
+    if (!isDeleting && charIndex < currentText.length) {
+      charIndex++;
+      setTimeout(typeLoop, 100); // 打字速度
+    } else if (isDeleting && charIndex > 0) {
+      charIndex--;
+      setTimeout(typeLoop, 50); // 刪字速度（通常比打字快）
+    } else {
+      isDeleting = !isDeleting;
+      if (!isDeleting) {
+        textIndex = (textIndex + 1) % texts.length;
       }
+      setTimeout(typeLoop, 1500); // 等待切換下一句
     }
-
-    typeChar();
   }
 
-  typeNextText();
+  typeLoop();
   </script>
 
 </body>
