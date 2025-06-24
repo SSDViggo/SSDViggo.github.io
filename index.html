@@ -5,8 +5,16 @@
   <title>江宇綸 | 個人首頁</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/styles.css">
+  <style>
+    /* 初始淡入樣式 */
+    body {
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+      will-change: opacity;
+    }
+  </style>
 </head>
-<body class="fade-in">
+<body onload="document.body.style.opacity='1'">
 
   <!-- ======== 導覽列 Navigation Bar ======== -->
   <nav>

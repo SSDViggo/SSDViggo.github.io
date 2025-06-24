@@ -7,16 +7,6 @@ body {
   margin: 0;
   padding: 0;
 }
-.fade-in {
-  opacity: 0;
-  animation: fadeInPage 1.2s ease-in-out forwards;
-}
-
-@keyframes fadeInPage {
-  to {
-    opacity: 1;
-  }
-}
 
 html {
   scroll-behavior: smooth;
@@ -48,7 +38,6 @@ nav a {
 /* ========= Hero 區塊（全螢幕背景區） ========= */
 .hero {
   height: 100vh;                                              /* 佔滿整個視窗高度 */
-  background: url('../images/arknights_bg5.jpg') center top 10%/cover no-repeat fixed; /* 漫畫背景圖 */
   display: flex;                                              /* 使用 Flex 對齊 */
   align-items: center;                                        /* 垂直置中 */
   justify-content: center;                                    /* 水平置中 */
