@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <title>江宇綸 | 個人首頁</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/styles.css"> <!-- 連結外部樣式表 -->
 </head>
 <body>
 
+  <!-- ======== 導覽列 Navigation Bar ======== -->
   <nav>
     <ul>
       <li><a href="#about">About</a></li>
@@ -17,7 +18,7 @@
     </ul>
   </nav>
 
-  <!-- Hero 區塊（進網頁時看到的背景） -->
+  <!-- ======== Hero 區塊（開場動畫背景） ======== -->
   <header class="hero">
     <div class="hero-content">
       <h1>江宇綸</h1>
@@ -25,29 +26,42 @@
       <a href="#main" class="scroll-btn">↓ 滑動看更多</a>
     </div>
   </header>
-  
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-    <li><strong>專案標題 1：</strong> 簡介… <a href="#" class="btn">查看</a></li>
-    <li><strong>專案標題 2：</strong> 簡介… <a href="#" class="btn">查看</a></li>
-    </ul>
-  </section>
 
-  <section id="cv">
-    <h2>CV</h2>
-    <p>你可以附上 <a href="cv.pdf" target="_blank">CV PDF 下載連結</a>，或改成文字介紹。</p>
-  </section>
+  <!-- ======== 主內容區（Projects / CV / Contact） ======== -->
+  <main id="main">
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: viggo101378@email.com</p>
-    <p>
-      <a href="https://github.com/SSDViggo" target="_blank">GitHub</a> |
-      <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-    </p>
-  </section>
+    <!-- ===== Projects 專案區 ===== -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>專案標題 1：</strong> 簡介… <a href="#" class="btn">查看</a></li>
+        <li><strong>專案標題 2：</strong> 簡介… <a href="#" class="btn">查看</a></li>
+      </ul>
+    </section>
 
+    <!-- ===== CV 履歷區 ===== -->
+    <section id="cv">
+      <h2>CV</h2>
+      <p>
+        你可以附上 
+        <a href="cv.pdf" target="_blank">CV PDF 下載連結</a>，
+        或改成文字介紹。
+      </p>
+    </section>
+
+    <!-- ===== Contact 聯絡方式 ===== -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: viggo101378@email.com</p>
+      <p>
+        <a href="https://github.com/SSDViggo" target="_blank">GitHub</a> |
+        <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ======== 頁尾 Footer ======== -->
   <footer>
     <p>© 2025 SSDViggo</p>
   </footer>
