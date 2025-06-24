@@ -14,7 +14,7 @@
     }
   </style>
 </head>
-<body onload="document.body.style.opacity='1'">
+<body class="fade-body">
 
   <!-- ======== 導覽列 Navigation Bar ======== -->
   <nav>
@@ -68,6 +68,12 @@
   <footer>
     <p>© 2025 SSDViggo</p>
   </footer>
+
+  <script>
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+  });
+  </script>
 
 </body>
 </html>
