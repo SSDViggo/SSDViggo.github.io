@@ -1,14 +1,12 @@
 /* ========= 基本設定 ========= */
 body {
-  font-family: sans-serif;             /* 使用無襯線字體 */
-  line-height: 1.6;                    /* 行距提升可讀性 */
-  max-width: 800px;                    /* 限制主內容寬度 */
-  margin: auto;                        /* 置中 */
-  padding: 1rem;                       /* 頁面邊距 */
-  background: url('../images/arknights_bg4.jpg'); /* 頁面背景圖 */
-  color: rgb(250, 250, 250);           /* 整體文字顏色（亮白） */
+  font-family: sans-serif;
+  line-height: 1.6;
+  background: url('../images/arknights_bg5.jpg') center/cover no-repeat fixed; /* 背景固定 */
+  color: rgb(250, 250, 250);
+  margin: 0;
+  padding: 0;
 }
-
 html {
   scroll-behavior: smooth;
 }
@@ -109,4 +107,13 @@ footer {
 
 .btn:hover {
   background-color: #0056b3;        /* 深藍 hover 效果 */
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.5); /* 半透明遮罩 */
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
