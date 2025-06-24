@@ -1,6 +1,7 @@
+/* ========= 字體載入 ========= */
 @font-face {
   font-family: 'Iansui';
-  src: url('..webfonts/Cubic_11_1.100_R.ttf') format('truetype');
+  src: url('../webfonts/Cubic_11_1.100_R.ttf') format('truetype'); /* 自訂字體路徑 */
   font-weight: normal;
   font-style: normal;
 }
@@ -14,66 +15,69 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* 首頁淡入動畫用 */
 .fade-body {
   opacity: 0;
   transition: opacity 1.2s ease-in-out;
   will-change: opacity;
 }
 
-/* 加上 .loaded 時才啟動淡入 */
 .fade-body.loaded {
   opacity: 1;
 }
+
+/* 全頁平滑滾動 */
 html {
   scroll-behavior: smooth;
 }
 
-/* ========= 導覽列 ========= */
+/* ========= 導覽列 nav ========= */
 nav {
-  background: #333;                    /* 深灰背景 */
+  background: #333;
   padding: 0.5rem;
   text-align: center;
 }
 
 nav ul {
-  list-style: none;                   /* 移除項目符號 */
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
 nav li {
-  display: inline-block;             /* 水平排列 */
+  display: inline-block;
   margin: 0 1rem;
 }
 
 nav a {
   color: white;
-  text-decoration: none;             /* 移除底線 */
+  text-decoration: none;
 }
 
-/* ========= Hero 區塊（全螢幕背景區） ========= */
+/* ========= Hero 區塊 ========= */
 .hero {
-  height: 100vh;                                              /* 佔滿整個視窗高度 */
-  display: flex;                                              /* 使用 Flex 對齊 */
-  align-items: center;                                        /* 垂直置中 */
-  justify-content: center;                                    /* 水平置中 */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   position: relative;
-  color: #fff;                                                /* 白字 */
+  color: #fff;
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;                   /* 確保文字在圖上方 */
+  z-index: 1; /* 確保在背景圖上層 */
 }
 
 .hero h1 {
   font-family: 'Iansui', 'Noto Sans TC', sans-serif;
   font-size: 4rem;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 8px rgba(2, 102, 160, 0.779);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* 黑色陰影，強調字體 */
   letter-spacing: 1px;
-  color: #0056b3;
+  color: #00AFFF; /* 藍綠亮色字體 */
 }
 
 .hero p {
@@ -88,85 +92,70 @@ nav a {
   font-size: 1.5rem;
   text-decoration: none;
   color: #fff;
-  animation: bounce 2s infinite;   /* 套用跳動動畫 */
+  animation: bounce 2s infinite;
 }
 
-/* 跳動動畫 keyframe */
+/* 箭頭跳動動畫 */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(10px); }
 }
 
-/* ========= 主要內容區塊 ========= */
+/* ========= 主要內容區塊 section ========= */
 section {
-  background: rgba(0, 0, 0, 0.5);    /* 半透明黑底，強化可讀性 */
+  background: rgba(0, 0, 0, 0.5); /* 半透明黑底，增強閱讀性 */
   padding: 1rem;
-  border-radius: 10px;              /* 圓角美化 */
+  border-radius: 10px;
 }
 
-/* ========= 頁尾 ========= */
+/* ========= 頁尾 footer ========= */
 footer {
   text-align: center;
   margin-top: 3rem;
   padding: 1rem;
   font-size: 0.9rem;
-  color: #777;                      /* 淺灰文字（可改亮一點） */
+  color: #777;
 }
 
-/* ========= 專案按鈕樣式 ========= */
+/* ========= 專案按鈕 btn ========= */
 .btn {
   display: inline-block;
   padding: 6px 12px;
   margin-top: 6px;
-  background-color: #022b56;        /* 藍色背景 */
+  background-color: #022b56;
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
-  transition: background-color 0.3s ease;  /* 滑鼠移入變色動畫 */
+  transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #0662c5;        /* 深藍 hover 效果 */
+  background-color: #0662c5;
 }
 
+/* ========= 主要內容容器（Projects / CV / Contact） ========= */
 .container {
   max-width: 800px;
   margin: auto;
   padding: 2rem 1rem;
-  background: rgba(0, 0, 0, 0.5); /* 半透明遮罩 */
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
-
-/* ========= 打字動畫樣式 ========= */
+/* ========= Hero h2 打字動畫樣式 ========= */
 .typewriter-text {
   font-size: 1.5rem;
+  font-family: 'Iansui', 'Noto Sans TC', sans-serif;
   white-space: nowrap;
-  border-right: 2px solid rgba(255,255,255,0.75);
   overflow: hidden;
-  width: 0;
-  animation: typing 2s steps(20, end) forwards, blink-caret 0.75s step-end infinite;
+  border-right: 2px solid rgba(255, 255, 255, 0.75); /* 模擬打字機光標 */
+  animation: blink-caret 0.75s step-end infinite;
+  min-height: 1.6em; /* 避免閃動時高度跳動 */
 }
 
-/* 打字動畫：將寬度從 0 擴展 */
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-/* 光標閃爍效果 */
+/* 光標閃爍動畫 */
 @keyframes blink-caret {
   0%, 100% { border-color: transparent; }
-  50% { border-color: rgba(255,255,255,0.75); }
-}
-
-.typewriter-text {
-  font-size: 1.5rem;
-  white-space: nowrap;
-  border-right: 2px solid rgba(255, 255, 255, 0.75);
-  overflow: hidden;
-  letter-spacing: 1px;
-  min-height: 1.5em;
-  animation: blink-caret 0.75s step-end infinite;
+  50% { border-color: rgba(255, 255, 255, 0.75); }
 }
