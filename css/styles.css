@@ -2,7 +2,7 @@
 body {
   font-family: sans-serif;
   line-height: 1.6;
-  background: url('../images/arknights_bg5.jpg') center/cover no-repeat fixed; /* 背景固定 */
+  background: url('../images/arknights_bg5.jpg') center center top 10%/cover no-repeat fixed; /* 背景固定 */
   color: rgb(250, 250, 250);
   margin: 0;
   padding: 0;
@@ -48,7 +48,7 @@ nav a {
 /* ========= Hero 區塊（全螢幕背景區） ========= */
 .hero {
   height: 100vh;                                              /* 佔滿整個視窗高度 */
-  background: url('../images/arknights_bg5.jpg') center/cover no-repeat fixed; /* 漫畫背景圖 */
+  background: url('../images/arknights_bg5.jpg') center top 10%/cover no-repeat fixed; /* 漫畫背景圖 */
   display: flex;                                              /* 使用 Flex 對齊 */
   align-items: center;                                        /* 垂直置中 */
   justify-content: center;                                    /* 水平置中 */
