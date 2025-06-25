@@ -46,50 +46,72 @@
   </header>
 
   <!-- ========= 主內容區 Main Section ========= -->
-  <main id="main" class="container">
+  <section id="projects" class="container">
+    <h2>My Projects</h2>
+    <div class="project-card">
+      <div class="project-image">
+        <img src="images/anime-helper-preview.png" alt="Anime Helper">
+      </div>
+      <div class="project-content">
+        <h3>Anime Helper</h3>
+        <p>動畫資料庫網站，支援搜尋、篩選與收藏，使用 React.js、Express.js 與 PostgreSQL 實作。</p>
+      </div>
+    </div>
 
-    <!-- ===== Projects 區塊 ===== -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>專案標題 1：</strong> 簡介… <a href="#" class="btn">查看</a></li>
-        <li><strong>專案標題 2：</strong> 簡介… <a href="#" class="btn">查看</a></li>
-      </ul>
-    </section>
+    <div class="project-card">
+      <div class="project-image">
+        <img src="images/tower-defense-preview.png" alt="塔防遊戲">
+      </div>
+      <div class="project-content">
+        <h3>塔防遊戲</h3>
+        <p>一款使用 JavaScript 製作的小型塔防遊戲，練習 canvas 與物件導向設計。</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- ===== CV 區塊 ===== -->
-    <section id="cv">
-      <h2>CV</h2>
-      <p>
-        你可以附上 
-        <a href="cv.pdf" target="_blank">CV PDF 下載連結</a>，
-        或改成文字介紹。
-      </p>
-    </section>
+  <!-- ========= CV 區塊 ========= -->
+  <section id="cv" class="container">
+    <h2>CV</h2>
+    <div class="project-card">
+      <div class="project-image">
+        <img src="images/cv-placeholder.png" alt="履歷代表圖">
+      </div>
+      <div class="project-content">
+        <h3>我的履歷</h3>
+        <p>點擊以下連結查看我最新的履歷內容。</p>
+        <a class="btn" href="cv.pdf" target="_blank">查看履歷 PDF</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- ===== Contact 區塊 ===== -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: viggo101378@email.com</p>
-      <p>
-        <a href="https://github.com/SSDViggo" target="_blank">GitHub</a> |
-        <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-      </p>
-    </section>
-  </main>
+  <!-- ========= Contact 區塊 ========= -->
+  <section id="contact" class="container">
+    <h2>Contact</h2>
+    <div class="project-card">
+      <div class="project-image">
+        <img src="images/mail-icon.png" alt="聯絡圖示">
+      </div>
+      <div class="project-content">
+        <h3>聯絡方式</h3>
+        <p>Email: your.email@example.com<br>
+        GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a><br>
+        LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
+        </p>
+      </div>
+    </div>
+  </section>
 
-  <!-- ========= 頁尾 Footer ========= -->
+  <!-- ========= 頁尾 ========= -->
   <footer>
-    <p>© 2025 SSDViggo</p>
+    &copy; 2025 江宇綸. All rights reserved.
   </footer>
 
-  <!-- ========= 淡入動畫載入 JS ========= -->
+  <!-- ========= JS for 淡入效果 ========= -->
   <script>
     window.addEventListener('load', () => {
-        document.body.classList.add('loaded');
-      });
-    </script>
-
+      document.body.classList.add('loaded');
+    });
+  </script>
     <!-- ========= 打字動畫 JS ========= -->
     <script>
     const texts = [
