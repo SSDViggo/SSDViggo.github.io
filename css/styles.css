@@ -90,13 +90,14 @@ a:visited {
 /* ========= 共用內容容器（Projects / CV / Contact） ========= */
 .container {
   max-width: 960px;
-  margin: 4rem auto;
-  padding: 1rem;
-  background-color: rgba(155, 149, 149, 0.75); /* 比黑略亮的半透明深底 */
+  margin: 2.5rem auto; /* 上下間距改小 */
+  padding: 1.5rem 2rem; /* 上下縮短、左右保持舒服 */
+  background-color: rgba(240, 240, 240, 0.88); /* 淺灰微透明 */
   border-radius: 1rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); /* 增加陰影立體感 */
-  color: #f0f0f0; /* 字體改亮灰，避免全白太刺眼 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #222; /* 深灰文字搭配淺灰背景 */
 }
+
 
 
 /* ========= Project / CV / Contact 樣式卡片 ========= */
