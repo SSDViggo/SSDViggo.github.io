@@ -118,13 +118,20 @@
   </script>
   <!-- ========= 打字動畫 JS ========= -->
   <script>
+    window.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+      });
+    </script>
+
+    <!-- ========= 打字動畫 JS ========= -->
+    <script>
     const texts = [
+      "我是資工系學生",
       "曾經有一隻鴿子說過: 古菇顧",
       "你剛剛看了一段沒有意義的文字",
       "手機不充電--就會沒電",
       "我爸媽是同一天結婚的",
       "如果你一天省下買一杯奶茶的錢，十天後你可以買十杯",
-      "我們不討論動物--查理普斯",
     ];
 
     const textEl = document.getElementById("typed-text");
@@ -134,6 +141,8 @@
 
     function type() {
       const currentPhrase = texts[phraseIndex];
+
+      // 更新顯示文字
       textEl.textContent = currentPhrase.slice(0, charIndex);
 
       if (!isDeleting) {
@@ -141,6 +150,7 @@
           charIndex++;
           setTimeout(type, 100);
         } else {
+          // 完整輸出後停一下再開始刪除
           setTimeout(() => {
             isDeleting = true;
             type();
@@ -151,10 +161,11 @@
           charIndex--;
           setTimeout(type, 50);
         } else {
-          textEl.textContent = "";
+          // 刪完後先清空，再延遲切換到下一句
+          textEl.textContent = ""; // ← 重點：這裡先清空
           phraseIndex = (phraseIndex + 1) % texts.length;
           isDeleting = false;
-          setTimeout(type, 400);
+          setTimeout(type, 400); // 多一點延遲會更自然
         }
       }
     }
