@@ -101,38 +101,38 @@ a:visited {
 
 /* ========= Project / CV / Contact 樣式卡片 ========= */
 .project-card {
-  background-color: rgba(155, 149, 149, 0.75); /* 幾乎透明 */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
   padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.9);  /* 明亮淺灰底 */
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   margin-bottom: 2rem;
-}
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 30px rgba(0,0,0,0.2);
 }
 
 .project-image img {
-  width: 300px;
-  height: 200px;
+  width: 240px;
+  height: auto;
+  border-radius: 0.75rem;
   object-fit: cover;
-  display: block;
 }
+
 .project-content {
-  padding: 20px 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex: 1;
+  color: #222;
 }
+
 .project-content h3 {
-  margin: 0 0 10px;
-  font-size: 1.5em;
-  color: #222; /* 修正白色看不到問題 */
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
+
 .project-content p {
-  margin: 0;
-  color: #444;
+  font-size: 1rem;
   line-height: 1.6;
+  margin: 0;
 }
 
 .typewriter-text {
