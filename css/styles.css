@@ -89,10 +89,10 @@ a:visited {
 
 /* ========= 共用內容容器（Projects / CV / Contact） ========= */
 .container {
-  max-width: 960px;
-  margin: 2.5rem auto; /* 上下間距改小 */
+  max-width: 1080px;
+  margin: 4rem auto; /* 上下間距改小 */
   padding: 1.5rem 2rem; /* 上下縮短、左右保持舒服 */
-  background-color: rgba(240, 240, 240, 0.88); /* 淺灰微透明 */
+  background-color: rgba(187, 195, 195, 0.88); /* 淺灰微透明 */
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   color: #222; /* 深灰文字搭配淺灰背景 */
@@ -102,21 +102,31 @@ a:visited {
 
 /* ========= Project / CV / Contact 樣式卡片 ========= */
 .project-card {
-  background-color: rgba(255, 255, 255, 0.3); /* 幾乎透明 */
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: rgba(160, 222, 222, 0.3);
+  border: 1px solid rgba(18, 17, 17, 0.1);
   border-radius: 0.75rem;
   padding: 1.5rem;
   margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.2);
+}
+
 .project-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 16px 30px rgba(0,0,0,0.2);
 }
 .project-image img {
-  width: 300px;
-  height: 200px;
+  width: 240px;
+  height: auto;
+  border-radius: 0.75rem;
   object-fit: cover;
-  display: block;
 }
 .project-content {
   padding: 20px 30px;
@@ -135,16 +145,30 @@ a:visited {
   line-height: 1.6;
 }
 
-.typewriter-text {
-  font-size: 1.5rem;
-  font-family: monospace;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #fff;
+
+#typed-text {
+  display: inline-block;
+  position: relative;
+  font-family: 'Iansui', 'Noto Sans TC', sans-serif;
+  min-height: 1.6em; /* ✅ 重點：維持高度 */
 }
 
-.caret {
-  animation: blink 0.7s infinite;
+#typed-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -3px;
+  width: 2px;
+  height: 1.2em;
+  background-color: rgba(255, 255, 255, 0.85);
+  animation: blink-caret 0.75s step-end infinite;
+  transform: translateY(-50%); /* ✅ 重點：垂直置中 */
+}
+
+
+@keyframes blink-caret {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
 }
 
 @keyframes blink {
