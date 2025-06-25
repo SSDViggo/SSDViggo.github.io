@@ -1,35 +1,30 @@
 /* ========= 字體載入 ========= */
 @font-face {
   font-family: 'Iansui';
-  src: url('../webfonts/Iansui-Regular.ttf') format('truetype'); /* 自訂字體路徑 */
-  font-weight: normal;
-  font-style: normal;
+  src: url('../webfonts/Iansui-Regular.ttf') format('truetype');
 }
 
-/* ========= 基本設定 ========= */
+/* ========= 全域設定 ========= */
 body {
-  font-family: sans-serif;
+  font-family: 'Iansui', 'Noto Sans TC', sans-serif;
   line-height: 1.6;
-  background: url('../images/arknights_bg5.jpg') center/cover no-repeat fixed; /* 背景固定 */
-  color: rgb(250, 250, 250);
+  background: url('../images/arknights_bg5.jpg') center/cover no-repeat fixed;
+  color: #fff;
   margin: 0;
   padding: 0;
 }
 
-/* 首頁淡入動畫用 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 頁面淡入動畫 */
 .fade-body {
   opacity: 0;
   transition: opacity 1.2s ease-in-out;
-  will-change: opacity;
 }
-
 .fade-body.loaded {
   opacity: 1;
-}
-
-/* 全頁平滑滾動 */
-html {
-  scroll-behavior: smooth;
 }
 
 /* ========= 導覽列 nav ========= */
@@ -38,21 +33,22 @@ nav {
   padding: 0.5rem;
   text-align: center;
 }
-
 nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 nav li {
   display: inline-block;
   margin: 0 1rem;
 }
-
 nav a {
   color: white;
   text-decoration: none;
+}
+/* 修正超連結 visited 顏色變紫 */
+a:visited {
+  color: white;
 }
 
 /* ========= Hero 區塊 ========= */
@@ -63,126 +59,49 @@ nav a {
   justify-content: center;
   text-align: center;
   position: relative;
-  color: #fff;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 1; /* 確保在背景圖上層 */
+  z-index: 1;
 }
-
 .hero h1 {
-  font-family: 'Iansui', 'Noto Sans TC', sans-serif;
   font-size: 4rem;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* 黑色陰影，強調字體 */
-  letter-spacing: 1px;
-  color: #00AFFF; /* 藍綠亮色字體 */
+  color: #00AFFF;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
-
 .hero p {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
 }
 
-/* ========= Hero 下方滑動提示箭頭 ========= */
+/* ========= 滑動提示箭頭動畫 ========= */
 .scroll-btn {
   display: inline-block;
   margin-top: 2rem;
   font-size: 1.5rem;
-  text-decoration: none;
   color: #fff;
   animation: bounce 2s infinite;
 }
-
-/* 箭頭跳動動畫 */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(10px); }
 }
 
-/* ========= 主要內容區塊 section ========= */
-section {
-  background: rgba(0, 0, 0, 0.5); /* 半透明黑底，增強閱讀性 */
-  padding: 1rem;
-  border-radius: 10px;
-}
-
-/* ========= 頁尾 footer ========= */
-footer {
-  text-align: center;
-  margin-top: 3rem;
-  padding: 1rem;
-  font-size: 0.9rem;
-  color: #777;
-}
-
-/* ========= 專案按鈕 btn ========= */
-.btn {
-  display: inline-block;
-  padding: 6px 12px;
-  margin-top: 6px;
-  background-color: #022b56;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #0662c5;
-}
-
-/* ========= 主要內容容器（Projects / CV / Contact） ========= */
+/* ========= 共用內容容器（Projects / CV / Contact） ========= */
 .container {
-  max-width: 800px;
+  max-width: 960px;
   margin: auto;
   padding: 2rem 1rem;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 3rem;
 }
 
-/* ========= Hero h2 打字動畫樣式 ========= */
-.typewriter-text {
-  position: relative;
-  font-size: 1.5rem;
-  font-family: 'Iansui', 'Noto Sans TC', sans-serif;
-  white-space: nowrap;
-  overflow: hidden;
-  min-height: 1.6em;
-}
-.typewriter-text::after {
-  content: "";
-  display: inline-block;
-  width: 2px;
-  height: 1.2em;
-  background-color: rgba(255, 255, 255, 0.85);
-  animation: blink-caret 0.75s step-end infinite;
-  position: absolute;
-  top: 0;
-  left: calc(100% + 2px); /* caret 對齊文字末尾右側 */
-}
-
-@keyframes blink-caret {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-
-.projects-section {
-  padding: 60px 20px;
-  background-color: #f8f8f8;
-}
-
-.projects-section h2 {
-  text-align: center;
-  font-size: 2.5em;
-  margin-bottom: 40px;
-}
-
+/* ========= Project / CV / Contact 樣式卡片 ========= */
 .project-card {
   display: flex;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
@@ -190,31 +109,27 @@ footer {
   margin: 0 auto 40px auto;
   max-width: 960px;
 }
-
 .project-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 16px 30px rgba(0,0,0,0.2);
 }
-
 .project-image img {
   width: 300px;
   height: 200px;
   object-fit: cover;
   display: block;
 }
-
 .project-content {
   padding: 20px 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
 .project-content h3 {
   margin: 0 0 10px;
   font-size: 1.5em;
+  color: #222; /* 修正白色看不到問題 */
 }
-
 .project-content p {
   margin: 0;
   color: #444;
