@@ -4,6 +4,23 @@
   <meta charset="UTF-8">
   <title>江宇綸 | 個人首頁</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 外部樣式表 -->
+  <link rel="stylesheet" href="./css/styles.css">
+
+  <!-- 頁面淡入動畫 -->
+  <style>
+    body {
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+      will-change: opacity;
+    }
+    body.loaded {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body class="fade-body">
   <!-- ========= 導覽列 ========= -->
   <nav>
     <ul>
@@ -25,24 +42,7 @@
       <a href="#about" class="scroll-btn">↓ 滑動看更多</a>
     </div>
   </header>
-
-  <!-- 外部樣式表 -->
-  <link rel="stylesheet" href="./css/styles.css">
-
-  <!-- 頁面淡入動畫 -->
-  <style>
-    body {
-      opacity: 0;
-      transition: opacity 1.2s ease-in-out;
-      will-change: opacity;
-    }
-    body.loaded {
-      opacity: 1;
-    }
-  </style>
-</head>
-
-<body class="fade-body">
+  
   <!-- ========= About 區塊 ========= -->
   <section id="about" class="container">
     <h2>About Me</h2>
