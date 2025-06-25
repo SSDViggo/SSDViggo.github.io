@@ -1,10 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <title>江宇綸 | 個人首頁</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <!-- 外部樣式表 -->
   <link rel="stylesheet" href="./css/styles.css">
 
@@ -22,7 +22,7 @@
 </head>
 
 <body class="fade-body">
-  <!-- ========= 導覽列 Navigation Bar ========= -->
+  <!-- ========= 導覽列 ========= -->
   <nav>
     <ul>
       <li><a href="#about">About</a></li>
@@ -31,26 +31,31 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
-
-  <!-- ========= Hero 區塊（首頁主視覺） ========= -->
+  <!-- ========= Hero 區塊 ========= -->
   <header class="hero">
     <div class="hero-content">
       <h1>江宇綸的網站</h1>
       <!-- 動態打字文字 -->
       <h2 class="typewriter-text">
-      <span id="typed-text"></span><span class="caret"></span>
+        <span id="typed-text"></span><span class="caret"></span>
       </h2>
       <!-- 滑動按鈕 -->
-      <a href="#main" class="scroll-btn">↓ 滑動看更多</a>
+      <a href="#about" class="scroll-btn">↓ 滑動看更多</a>
     </div>
   </header>
+  
+  <!-- ========= About 區塊 ========= -->
+  <section id="about" class="container">
+    <h2>About Me</h2>
+    <p>我是國立清華大學資工系28級的學生，對Web 開發、AI 和圖像處理有濃厚興趣，喜歡嘗試新技術，熱愛學習與創作。</p>
+  </section>
 
-  <!-- ========= 主內容區 Main Section ========= -->
+  <!-- ========= Projects 區塊 ========= -->
   <section id="projects" class="container">
     <h2>My Projects</h2>
     <div class="project-card">
       <div class="project-image">
-        <img src="images/anime-helper-preview.png" alt="Anime Helper">
+        <img src="images/project1.png" alt="Anime Helper">
       </div>
       <div class="project-content">
         <h3>Anime Helper</h3>
@@ -60,7 +65,7 @@
 
     <div class="project-card">
       <div class="project-image">
-        <img src="images/tower-defense-preview.png" alt="塔防遊戲">
+        <img src="images/arknights_bg2.jpg" alt="塔防遊戲">
       </div>
       <div class="project-content">
         <h3>塔防遊戲</h3>
@@ -112,15 +117,15 @@
       document.body.classList.add('loaded');
     });
   </script>
-    <!-- ========= 打字動畫 JS ========= -->
-    <script>
+  <!-- ========= 打字動畫 JS ========= -->
+  <script>
     const texts = [
-      "我是資工系學生",
       "曾經有一隻鴿子說過: 古菇顧",
       "你剛剛看了一段沒有意義的文字",
       "手機不充電--就會沒電",
       "我爸媽是同一天結婚的",
       "如果你一天省下買一杯奶茶的錢，十天後你可以買十杯",
+      "我們不討論動物--查理普斯",
     ];
 
     const textEl = document.getElementById("typed-text");
@@ -130,8 +135,6 @@
 
     function type() {
       const currentPhrase = texts[phraseIndex];
-
-      // 更新顯示文字
       textEl.textContent = currentPhrase.slice(0, charIndex);
 
       if (!isDeleting) {
@@ -139,7 +142,6 @@
           charIndex++;
           setTimeout(type, 100);
         } else {
-          // 完整輸出後停一下再開始刪除
           setTimeout(() => {
             isDeleting = true;
             type();
@@ -150,16 +152,16 @@
           charIndex--;
           setTimeout(type, 50);
         } else {
-          // 刪完後先清空，再延遲切換到下一句
-          textEl.textContent = ""; // ← 重點：這裡先清空
+          textEl.textContent = "";
           phraseIndex = (phraseIndex + 1) % texts.length;
           isDeleting = false;
-          setTimeout(type, 400); // 多一點延遲會更自然
+          setTimeout(type, 400);
         }
       }
     }
 
     type();
   </script>
+
 </body>
 </html>
