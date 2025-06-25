@@ -116,7 +116,7 @@
       document.body.classList.add('loaded');
     });
   </script>
-  <!-- ========= 打字動畫 JS ========= -->
+  <!-- ========= 打字動畫 JS ========= -->  
   <script>
     const texts = [
       "我是資工系學生",
@@ -127,6 +127,7 @@
       "如果你一天省下買一杯奶茶的錢，十天後你可以買十杯",
     ];
 
+
     const textEl = document.getElementById("typed-text");
     let phraseIndex = 0;
     let charIndex = 0;
@@ -135,23 +136,32 @@
     function type() {
       const currentPhrase = texts[phraseIndex];
 
+      // 更新顯示文字
+      textEl.textContent = currentPhrase.slice(0, charIndex);
+
       if (!isDeleting) {
-        textEl.textContent = currentPhrase.slice(0, charIndex++);
-        if (charIndex > currentPhrase.length) {
-          isDeleting = true;
-          setTimeout(type, 1000); // 停一下再刪
-          return;
+        if (charIndex < currentPhrase.length) {
+          charIndex++;
+          setTimeout(type, 100);
+        } else {
+          // 完整輸出後停一下再開始刪除
+          setTimeout(() => {
+            isDeleting = true;
+            type();
+          }, 1200);
         }
       } else {
-        textEl.textContent = currentPhrase.slice(0, charIndex--);
-        if (charIndex < 0) {
-          isDeleting = false;
+        if (charIndex > 0) {
+          charIndex--;
+          setTimeout(type, 50);
+        } else {
+          // 刪完後先清空，再延遲切換到下一句
+          textEl.textContent = ""; // ← 重點：這裡先清空
           phraseIndex = (phraseIndex + 1) % texts.length;
-          setTimeout(type, 300); // 下一句前停一下
-          return;
+          isDeleting = false;
+          setTimeout(type, 400); // 多一點延遲會更自然
         }
       }
-      setTimeout(type, isDeleting ? 50 : 100);
     }
 
     type();

@@ -155,6 +155,8 @@ a:visited {
   left: calc(100% + 2px); /* caret 對齊文字末尾右側 */
 }
 
+
+/* 光標閃爍動畫 */
 @keyframes blink-caret {
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }
