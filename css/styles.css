@@ -152,16 +152,14 @@ footer {
   overflow: hidden;
   min-height: 1.6em;
 }
-.typewriter-text::after {
-  content: "";
+.caret {
   display: inline-block;
   width: 2px;
   height: 1.2em;
   background-color: rgba(255, 255, 255, 0.85);
   animation: blink-caret 0.75s step-end infinite;
-  position: absolute;
-  top: 0;
-  left: calc(100% + 2px); /* caret 對齊文字末尾右側 */
+  vertical-align: bottom;
+  margin-left: 2px;
 }
 
 @keyframes blink-caret {
