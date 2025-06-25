@@ -175,3 +175,35 @@ a:visited {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  gap: 8px;
+}
+
+.contact-row .icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.contact-icon {
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+}
+.contact-info a {
+  color: #007acc;
+  text-decoration: none;
+}
+
+.contact-info a:visited {
+  color: #007acc; /* 點過後維持一樣顏色 */
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
