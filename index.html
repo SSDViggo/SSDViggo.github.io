@@ -49,12 +49,25 @@
   <main id="main" class="container">
 
     <!-- ===== Projects 區塊 ===== -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>專案標題 1：</strong> 簡介… <a href="#" class="btn">查看</a></li>
-        <li><strong>專案標題 2：</strong> 簡介… <a href="#" class="btn">查看</a></li>
-      </ul>
+    <section id="projects" class="projects-section">
+      <h2>My Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="images/project1.png" alt="Project 1">
+          <div class="project-info">
+            <h3>專案名稱 1</h3>
+            <p>這是一個關於 xxx 的專案，使用了 HTML/CSS/JS 技術...</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="images/project1.jpg" alt="Project 2">
+          <div class="project-info">
+            <h3>專案名稱 2</h3>
+            <p>描述第二個專案的簡介...</p>
+          </div>
+        </div>
+        <!-- 可繼續複製新增更多專案 -->
+      </div>
     </section>
 
     <!-- ===== CV 區塊 ===== -->
@@ -93,12 +106,12 @@
     <!-- ========= 打字動畫 JS ========= -->
     <script>
     const texts = [
-      "我是資工系學生",
       "曾經有一隻鴿子說過: 古菇顧",
       "你剛剛看了一段沒有意義的文字",
       "手機不充電--就會沒電",
       "我爸媽是同一天結婚的",
       "如果你一天省下買一杯奶茶的錢，十天後你可以買十杯",
+      "我們不討論動物--查理普斯",
     ];
 
     const textEl = document.getElementById("typed-text");
