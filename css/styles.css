@@ -101,7 +101,7 @@ a:visited {
 
 /* ========= Project / CV / Contact 樣式卡片 ========= */
 .project-card {
-  background-color: rgba(255, 255, 255, 0.05); /* 幾乎透明 */
+  background-color: rgba(155, 149, 149, 0.75); /* 幾乎透明 */
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.75rem;
   padding: 1.5rem;
