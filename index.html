@@ -33,7 +33,7 @@
   <!-- ========= Hero 區塊 ========= -->
   <header class="hero">
     <div class="hero-content">
-      <h1>江宇綸的網站</h1>
+      <h1>江宇綸的網站1</h1>
       <!-- 動態打字文字 -->
       <h2 class="typewriter-text">
         <span id="typed-text"></span><span class="caret"></span>
@@ -116,8 +116,15 @@
       document.body.classList.add('loaded');
     });
   </script>
-  <!-- ========= 打字動畫 JS ========= -->  
+  <!-- ========= 打字動畫 JS ========= -->
   <script>
+    window.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+      });
+    </script>
+
+    <!-- ========= 打字動畫 JS ========= -->
+    <script>
     const texts = [
       "我是資工系學生",
       "曾經有一隻鴿子說過: 古菇顧",
@@ -126,7 +133,6 @@
       "我爸媽是同一天結婚的",
       "如果你一天省下買一杯奶茶的錢，十天後你可以買十杯",
     ];
-
 
     const textEl = document.getElementById("typed-text");
     let phraseIndex = 0;
