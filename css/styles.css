@@ -135,3 +135,20 @@ a:visited {
   color: #444;
   line-height: 1.6;
 }
+
+.typewriter-text {
+  font-size: 1.5rem;
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #fff;
+}
+
+.caret {
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
