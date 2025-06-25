@@ -1,30 +1,35 @@
 /* ========= 字體載入 ========= */
 @font-face {
   font-family: 'Iansui';
-  src: url('../webfonts/Iansui-Regular.ttf') format('truetype');
+  src: url('../webfonts/Iansui-Regular.ttf') format('truetype'); /* 自訂字體路徑 */
+  font-weight: normal;
+  font-style: normal;
 }
 
-/* ========= 全域設定 ========= */
+/* ========= 基本設定 ========= */
 body {
-  font-family: 'Iansui', 'Noto Sans TC', sans-serif;
+  font-family: sans-serif;
   line-height: 1.6;
-  background: url('../images/arknights_bg5.jpg') center/cover no-repeat fixed;
-  color: #fff;
+  background: url('../images/arknights_bg5.jpg') center/cover no-repeat fixed; /* 背景固定 */
+  color: rgb(250, 250, 250);
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* 頁面淡入動畫 */
+/* 首頁淡入動畫用 */
 .fade-body {
   opacity: 0;
   transition: opacity 1.2s ease-in-out;
+  will-change: opacity;
 }
+
 .fade-body.loaded {
   opacity: 1;
+}
+
+/* 全頁平滑滾動 */
+html {
+  scroll-behavior: smooth;
 }
 
 /* ========= 導覽列 nav ========= */
@@ -33,22 +38,21 @@ nav {
   padding: 0.5rem;
   text-align: center;
 }
+
 nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
 nav li {
   display: inline-block;
   margin: 0 1rem;
 }
+
 nav a {
   color: white;
   text-decoration: none;
-}
-/* 修正超連結 visited 顏色變紫 */
-a:visited {
-  color: white;
 }
 
 /* ========= Hero 區塊 ========= */
@@ -59,83 +63,87 @@ a:visited {
   justify-content: center;
   text-align: center;
   position: relative;
+  color: #fff;
 }
 
 .hero-content {
-  z-index: 1;
-}
-.hero h1 {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  color: #00AFFF;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-}
-.hero p {
-  font-size: 1.2rem;
+  position: relative;
+  z-index: 1; /* 確保在背景圖上層 */
 }
 
-/* ========= 滑動提示箭頭動畫 ========= */
+.hero h1 {
+  font-family: 'Iansui', 'Noto Sans TC', sans-serif;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* 黑色陰影，強調字體 */
+  letter-spacing: 1px;
+  color: #00AFFF; /* 藍綠亮色字體 */
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* ========= Hero 下方滑動提示箭頭 ========= */
 .scroll-btn {
   display: inline-block;
   margin-top: 2rem;
   font-size: 1.5rem;
+  text-decoration: none;
   color: #fff;
   animation: bounce 2s infinite;
 }
+
+/* 箭頭跳動動畫 */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(10px); }
 }
 
-/* ========= 共用內容容器（Projects / CV / Contact） ========= */
+/* ========= 主要內容區塊 section ========= */
+section {
+  background: rgba(0, 0, 0, 0.5); /* 半透明黑底，增強閱讀性 */
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+/* ========= 頁尾 footer ========= */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* ========= 專案按鈕 btn ========= */
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-top: 6px;
+  background-color: #022b56;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0662c5;
+}
+
+/* ========= 主要內容容器（Projects / CV / Contact） ========= */
 .container {
-  max-width: 960px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: rgba(30, 30, 30, 0.75); /* 比黑略亮的半透明深底 */
-  border-radius: 1rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); /* 增加陰影立體感 */
-  color: #f0f0f0; /* 字體改亮灰，避免全白太刺眼 */
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
-
-
-
-/* ========= Project / CV / Contact 樣式卡片 ========= */
-.project-card {
-  background-color: rgba(255, 255, 255, 0.05); /* 幾乎透明 */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-}
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 30px rgba(0,0,0,0.2);
-}
-.project-image img {
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-}
-.project-content {
-  padding: 20px 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.project-content h3 {
-  margin: 0 0 10px;
-  font-size: 1.5em;
-  color: #222; /* 修正白色看不到問題 */
-}
-.project-content p {
-  margin: 0;
-  color: #444;
-  line-height: 1.6;
-}
-
+/* ========= Hero h2 打字動畫樣式 ========= */
 .typewriter-text {
   position: relative;
   font-size: 1.5rem;
