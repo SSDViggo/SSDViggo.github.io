@@ -61,17 +61,136 @@
         <p>於大一上加入交大的GDSC社，為影像生成式ai概論與實作組的組員。</p>
       </div>
     </a>
+    <section id="assignments" class="container">
+        <h2>Lab Training Assignments</h2>
+        <p>點擊下方標題以展開作業詳細列表：</p>
 
-    <a href="projects/I2P2/index.html" class="project-card" style="text-decoration: none;">
-      <div class="project-image">
-        <img src="images/project1.png" alt="塔防遊戲">
-      </div>
-      <div class="project-content">
-        <h3>塔防遊戲</h3>
-        <p>大一程設的final project，使用了gemini api來生成關卡等。</p>
-      </div>
-    </a>
+        <button class="accordion">
+          <span class="icon">➤</span> Lab 培訓作業列表 (IGVI)
+        </button>
+        
+        <div class="panel">
+          <ul class="assignment-list">
+            <li>
+              <a href="assignments/DL.html">🔗 DL-作業規範</a>
+            </li>
+            <li>
+              <a href="assignments/Generative_model.html">🔗 Generative model(GAN/VAE)-作業規範</a>
+            </li>
+            <li>
+              <a href="assignments/RL.html">🔗 RL(Lab1+Lab2)-作業規範</a>
+            </li>
+            <li>
+              <a href="assignments/CG.html">🔗 CG-作業規範</a>
+            </li>
+            <li>
+              <a href="assignments/Cocos.html">🔗 Cocos Creator-作業規範</a>
+            </li>
+            <li>
+              <a href="assignments/Unity.html">🔗 Unity-作業規範</a>
+            </li>
+            <li>
+              <a href="assignments/YOLO.html">🔗 YOLO-作業規範</a>
+            </li>
+          </ul>
+        </div>
+      </section>
 
+      <style>
+        /* 折疊按鈕樣式 */
+        .accordion {
+          background-color: #f1f1f1; /* 淺灰背景，可依喜好調整 */
+          color: #333;
+          cursor: pointer;
+          padding: 18px;
+          width: 100%;
+          text-align: left;
+          border: none;
+          outline: none;
+          transition: 0.4s;
+          font-size: 1.1rem;
+          border-radius: 8px;
+          font-weight: bold;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        /* 滑鼠懸停與啟用狀態 */
+        .accordion:hover, .accordion.active {
+          background-color: #ddd;
+        }
+
+        /* 箭頭旋轉動畫 */
+        .accordion .icon {
+          transition: transform 0.3s ease;
+        }
+        .accordion.active .icon {
+          transform: rotate(90deg);
+        }
+
+        /* 折疊內容區域 */
+        .panel {
+          padding: 0 18px;
+          background-color: rgba(193, 223, 255, 0.64);
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease-out;
+          border-radius: 0 0 8px 8px;
+        }
+
+        /* 列表樣式 */
+        .assignment-list {
+          list-style-type: none;
+          padding: 0;
+          margin: 15px 0;
+        }
+
+        .assignment-list li {
+          margin: 10px 0;
+          padding: 10px;
+          border-bottom: 1px solid #eee;
+        }
+
+        .assignment-list li:last-child {
+          border-bottom: none;
+        }
+
+        .assignment-list a {
+          text-decoration: none;
+          color: #007BFF; /* 連結顏色 */
+          font-size: 1rem;
+          display: block; /* 讓整個區塊可點擊 */
+          transition: color 0.2s;
+        }
+
+        .assignment-list a:hover {
+          color: #0056b3;
+          font-weight: bold;
+        }
+      </style>
+
+      <script>
+        // 取得所有 class 為 accordion 的元素
+        const accordions = document.querySelectorAll(".accordion");
+
+        accordions.forEach(acc => {
+          acc.addEventListener("click", function() {
+            // 切換 active class (控制顏色與箭頭旋轉)
+            this.classList.toggle("active");
+
+            // 控制面板展開/收合
+            const panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+              panel.style.maxHeight = null; // 收合
+            } else {
+              panel.style.maxHeight = panel.scrollHeight + "px"; // 展開
+            }
+          });
+        });
+      </script>
+    </div>
+  </section>
 
   </section>
 
@@ -94,9 +213,7 @@
         <img src="images/linkedin_icon.png" alt="LinkedIn Icon" class="icon">
         <span>LinkedIn: <a href="https://www.linkedin.com/in/%E6%B1%9F-%E5%95%8A-02a5a8353/" target="_blank">https://www.linkedin.com/in/%E6%B1%9F-%E5%95%8A-02a5a8353/</a></span>
       </div>
-
-    </div>
-  </section>
+      
 
 
   <!-- ========= 頁尾 ========= -->
