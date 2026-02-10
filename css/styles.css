@@ -254,3 +254,96 @@ a:visited {
 .top-buttons .btn:hover {
   background-color: rgba(0, 123, 204, 1);
 }
+
+/* 方法區塊的間距 */
+.method-block {
+  margin-bottom: 2rem;
+}
+
+/* 模擬程式碼編輯器的樣式 */
+.code-box {
+  background-color: #1e1e1e; /* 深色背景 */
+  color: #d4d4d4;            /* 淺色文字 */
+  padding: 15px;
+  border-radius: 8px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace; /* 等寬字體 */
+  font-size: 0.9rem;
+  overflow-x: auto;          /* 如果程式碼太長可以左右滑動 */
+  margin-top: 10px;
+  box-shadow: inset 0 0 10px #000000;
+}
+
+.code-box pre {
+  margin: 0;
+}
+
+/* 關鍵字高亮 (選用) */
+.code-box strong {
+  color: #569cd6; /* 藍色高亮 */
+}
+/* 左右並排的容器 */
+.code-comparison {
+  display: flex;        /* 啟用彈性排版 */
+  gap: 20px;            /* 左右兩欄的間距 */
+  flex-wrap: wrap;      /* 讓空間不夠時(如手機)自動換行變上下排 */
+  margin-top: 15px;
+  align-items: stretch; /* 讓左右兩邊高度等高 (選用) */
+}
+
+/* 每一欄的設定 */
+.code-column {
+  flex: 1;              /* 讓左右兩欄平均分配寬度 (1:1) */
+  min-width: 300px;     /* 設定最小寬度，防止手機版擠在一起 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 讓 Code Box 填滿高度 (視覺較整齊) */
+.code-column .code-box {
+  flex-grow: 1;
+}
+
+/* 微調標題樣式 */
+.code-column h4 {
+  margin-bottom: 10px;
+  color: #0056b3;       /* 使用稍微顯眼的藍色，可自行調整 */
+  text-align: center;
+}
+
+/* --- 通用的資訊卡片樣式 (與首頁風格一致) --- */
+.info-card {
+  background-color: rgba(160, 222, 222, 0.3); /* 淡淡的青色背景 */
+  border: 1px solid rgba(18, 17, 17, 0.1);    /* 柔和的邊框 */
+  border-radius: 0.75rem;                      /* 圓角 */
+  padding: 1.5rem;                             /* 內距 */
+  margin-top: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);   /* 微微的陰影讓它浮起來 */
+}
+
+/* 確保卡片內的文字是深色，非常明顯 */
+.info-card p {
+  color: #222;       /* 深灰色，閱讀最舒服 */
+  font-weight: 500;  /* 稍微加粗一點點 */
+  margin-bottom: 15px;
+}
+
+/* --- 按鈕樣式 (讓它在淡背景上跳出來) --- */
+.btn {
+  display: inline-block;
+  background-color: #598abfce; /* 深藍色背景 */
+  color: #ffffff !important; /* 白色文字 (加上 !important 確保不被覆蓋) */
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* 滑鼠移過去的效果 */
+.btn:hover {
+  background-color: #004494; /* 變更深的藍色 */
+  transform: translateY(-2px); /* 微微往上浮 */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}

@@ -61,7 +61,7 @@
         <p>於大一上加入交大的GDSC社，為影像生成式ai概論與實作組的組員。</p>
       </div>
     </a>
-    <section id="assignments" class="container">
+    <section id="assignments">
         <h2>Lab Training Assignments</h2>
         <p>點擊下方標題以展開作業詳細列表：</p>
 
@@ -72,103 +72,118 @@
         <div class="panel">
           <ul class="assignment-list">
             <li>
-              <a href="assignments/DL.html">🔗 DL-作業規範</a>
+              <a href="assignments/DL.html">🔗 DL</a>
             </li>
             <li>
-              <a href="assignments/Generative_model.html">🔗 Generative model(GAN/VAE)-作業規範</a>
+              <a href="assignments/Generative_model.html">🔗 Generative model(GAN/VAE)</a>
             </li>
             <li>
-              <a href="assignments/RL.html">🔗 RL(Lab1+Lab2)-作業規範</a>
+              <a href="assignments/RL1.html">🔗 RL(Lab1)</a>
             </li>
             <li>
-              <a href="assignments/CG.html">🔗 CG-作業規範</a>
+              <a href="assignments/RL2.html">🔗 RL(Lab2)</a>
             </li>
             <li>
-              <a href="assignments/Cocos.html">🔗 Cocos Creator-作業規範</a>
+              <a href="assignments/CG.html">🔗 CG</a>
             </li>
             <li>
-              <a href="assignments/Unity.html">🔗 Unity-作業規範</a>
+              <a href="assignments/Cocos.html">🔗 Cocos Creator</a>
             </li>
             <li>
-              <a href="assignments/YOLO.html">🔗 YOLO-作業規範</a>
+              <a href="assignments/Unity.html">🔗 Unity</a>
+            </li>
+            <li>
+              <a href="assignments/YOLO.html">🔗 YOLO</a>
             </li>
           </ul>
         </div>
       </section>
 
       <style>
-        /* 折疊按鈕樣式 */
-        .accordion {
-          background-color: #f1f1f1; /* 淺灰背景，可依喜好調整 */
-          color: #333;
-          cursor: pointer;
-          padding: 18px;
-          width: 100%;
-          text-align: left;
-          border: none;
-          outline: none;
-          transition: 0.4s;
-          font-size: 1.1rem;
-          border-radius: 8px;
-          font-weight: bold;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
+      /* 新增：讓作業區塊的背景跟 GDSC 卡片 (project-card) 一模一樣 */
+      #assignments {
+        background-color: rgba(160, 222, 222, 0.3); /* 與 project-card 相同的青色半透明 */
+        border: 1px solid rgba(18, 17, 17, 0.1);    /* 相同的邊框 */
+        border-radius: 0.75rem;                      /* 相同的圓角 */
+        padding: 1.5rem;                             /* 相同的內距 */
+        margin-top: 2rem;
+        color: #222;
+      }
 
-        /* 滑鼠懸停與啟用狀態 */
-        .accordion:hover, .accordion.active {
-          background-color: #ddd;
-        }
+      /* 折疊按鈕樣式 - 改為半透明白，融入青色背景 */
+      .accordion {
+        background-color: rgba(255, 255, 255, 0.4); /* 半透明白色 */
+        color: #222;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        /* 箭頭旋轉動畫 */
-        .accordion .icon {
-          transition: transform 0.3s ease;
-        }
-        .accordion.active .icon {
-          transform: rotate(90deg);
-        }
+      /* 滑鼠懸停與啟用狀態 */
+      .accordion:hover, .accordion.active {
+        background-color: rgba(255, 255, 255, 0.6); /* 滑鼠移過去變白一點 */
+      }
 
-        /* 折疊內容區域 */
-        .panel {
-          padding: 0 18px;
-          background-color: rgba(193, 223, 255, 0.64);
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease-out;
-          border-radius: 0 0 8px 8px;
-        }
+      /* 箭頭旋轉動畫 */
+      .accordion .icon {
+        transition: transform 0.3s ease;
+      }
+      .accordion.active .icon {
+        transform: rotate(90deg);
+      }
 
-        /* 列表樣式 */
-        .assignment-list {
-          list-style-type: none;
-          padding: 0;
-          margin: 15px 0;
-        }
+      /* 折疊內容區域 */
+      .panel {
+        padding: 0 18px;
+        /* 這裡可以設為透明，直接透出底下的青色，或是保留原本的淡藍色 */
+        background-color: rgba(221, 229, 229, 0.887); 
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        border-radius: 0 0 8px 8px;
+        margin-top: 5px;
+      }
 
-        .assignment-list li {
-          margin: 10px 0;
-          padding: 10px;
-          border-bottom: 1px solid #eee;
-        }
+      /* 列表樣式 */
+      .assignment-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 10px 0;
+      }
 
-        .assignment-list li:last-child {
-          border-bottom: none;
-        }
+      .assignment-list li {
+        margin: 5px 0;
+        padding: 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 讓線條更柔和 */
+      }
 
-        .assignment-list a {
-          text-decoration: none;
-          color: #007BFF; /* 連結顏色 */
-          font-size: 1rem;
-          display: block; /* 讓整個區塊可點擊 */
-          transition: color 0.2s;
-        }
+      .assignment-list li:last-child {
+        border-bottom: none;
+      }
 
-        .assignment-list a:hover {
-          color: #0056b3;
-          font-weight: bold;
-        }
-      </style>
+      .assignment-list a {
+        text-decoration: none;
+        color: #0056b3; /*稍微深一點的藍色，在青色背景上比較清楚*/
+        font-size: 1rem;
+        display: block;
+        transition: color 0.2s;
+      }
+
+      .assignment-list a:hover {
+        color: #003d80;
+        font-weight: bold;
+      }
+    </style>
 
       <script>
         // 取得所有 class 為 accordion 的元素
