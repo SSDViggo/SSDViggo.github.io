@@ -1,0 +1,81 @@
+/* ========= 導覽列 nav ========= */
+nav {
+  background: #333;
+  padding: 0.5rem;
+  text-align: center;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+}
+a:visited {
+  color: white;
+}
+
+/* ========= Hero 區塊 (首頁大圖) ========= */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+.hero-content {
+  z-index: 1;
+}
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: #00AFFF;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+.hero p {
+  font-size: 1.2rem;
+}
+
+/* ========= 共用容器樣式 ========= */
+.container {
+  max-width: 1080px;
+  margin: 4rem auto;
+  padding: 1.5rem 2rem;
+  background-color: rgba(187, 195, 195, 0.88);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #222;
+}
+
+/* ========= 專案詳細頁大白紙樣式 ========= */
+.project-detail {
+  background-color: rgba(255, 255, 255, 0.88);
+  color: #222;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  margin-top: 4rem;
+}
+.project-detail img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  margin: 1rem auto;
+}
+
+/* ========= 固定右上角區塊 ========= */
+.top-buttons {
+  position: fixed;
+  top: 1rem;
+  right: 1.5rem;
+  z-index: 9999;
+}

@@ -1,0 +1,27 @@
+/* ========= 字體載入 ========= */
+@font-face {
+  font-family: 'Iansui';
+  src: url('../webfonts/Iansui-Regular.ttf') format('truetype');
+}
+
+/* ========= 全域設定 ========= */
+body {
+  font-family: 'Iansui', 'Noto Sans TC', sans-serif;
+  line-height: 1.6;
+  background: url('../images/arknights_bg5.jpg') center/cover no-repeat fixed;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth; /* 滑動時平滑過渡 */
+}
+
+/* ========= 頁面淡入動畫 ========= */
+.fade-body {
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+.fade-body.loaded {
+  opacity: 1;
+}

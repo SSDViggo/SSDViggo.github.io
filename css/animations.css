@@ -1,0 +1,39 @@
+/* ========= 滑動提示箭頭動畫 ========= */
+.scroll-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  color: #fff;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* ========= 動態打字效果 ========= */
+#typed-text {
+  display: inline-block;
+  position: relative;
+  font-family: 'Iansui', 'Noto Sans TC', sans-serif;
+  min-height: 1.6em; /* 避免光標跳動 */
+}
+#typed-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -3px;
+  width: 2px;
+  height: 1.2em;
+  background-color: rgba(255, 255, 255, 0.85);
+  animation: blink-caret 0.75s step-end infinite;
+  transform: translateY(-50%);
+}
+@keyframes blink-caret {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

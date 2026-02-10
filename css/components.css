@@ -1,0 +1,144 @@
+/* ========= 通用按鈕樣式 ========= */
+.btn {
+  display: inline-block;
+  background-color: #598abfce;
+  color: #ffffff !important;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.btn:hover {
+  background-color: #004494;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+/* 右上角按鈕特例調整 */
+.top-buttons .btn {
+  font-size: 1.5rem;
+  padding: 0.7rem 2rem;
+  background-color: rgba(0, 123, 204, 0.85);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.top-buttons .btn:hover {
+  background-color: rgba(0, 123, 204, 1);
+  transform: none;
+}
+
+/* ========= 卡片樣式 (Project & Info) ========= */
+.project-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: rgba(160, 222, 222, 0.3);
+  border: 1px solid rgba(18, 17, 17, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.2);
+}
+.project-image {
+  width: 150%;
+  max-width: 200px;
+  aspect-ratio: 5 / 3;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  flex-shrink: 0;
+  background-color: transparent !important;
+}
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+}
+.project-content {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.project-content h3 { margin: 0 0 10px; font-size: 1.5em; color: #222; }
+.project-content p { margin: 0; color: #444; line-height: 1.6; }
+
+.info-card {
+  background-color: rgba(160, 222, 222, 0.3);
+  border: 1px solid rgba(18, 17, 17, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-top: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+.info-card p {
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+/* ========= 聯絡資訊區塊 ========= */
+.contact-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  gap: 8px;
+}
+.contact-row .icon { width: 20px; height: 20px; vertical-align: middle; }
+.contact-info a { color: #007acc; text-decoration: none; }
+.contact-info a:visited { color: #007acc; }
+.contact-info a:hover { text-decoration: underline; }
+
+/* ========= 圖片與程式碼排版 ========= */
+.image-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: left;
+  align-items: flex-start;
+}
+.image-row img {
+  flex: 1 1 300px;
+  object-fit: contain;
+  max-height: 400px;
+}
+.method-block { margin-bottom: 2rem; }
+
+/* 程式碼編輯器樣式 */
+.code-box {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  margin-top: 10px;
+  box-shadow: inset 0 0 10px #000000;
+}
+.code-box pre { margin: 0; }
+.code-box strong { color: #569cd6; }
+
+/* 程式碼左右並排 */
+.code-comparison {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  align-items: stretch;
+}
+.code-column {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+.code-column .code-box { flex-grow: 1; }
+.code-column h4 { margin-bottom: 10px; color: #0056b3; text-align: center; }
