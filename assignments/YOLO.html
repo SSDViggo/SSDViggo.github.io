@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>作業名稱 | 江宇綸</title>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  
+  <script>
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+  </script>
+</head>
+
+<body class="fade-body">
+  
+  <div class="top-buttons">
+    <a href="../index.html" class="btn">回首頁</a>
+  </div>
+
+  <div class="container project-detail">
+    
+    <a href="../index.html" class="btn">← Back to Home</a>
+    
+    <h1>YOLO</h1>
+    
+    <section>
+      <h2>作業簡介</h2>
+      <p>
+        先標記100張圖片作為訓練資料，用來fine tune YOLO，最後得到標記好的圖片。
+      </p>
+    </section>
+
+    <section>
+      <h2>使用技術 / 環境</h2>
+      <p>
+        <ul>
+          <li>Language:  Python 3.9</li>
+          <li>pre train model: YOLO11s</li>
+          <li>Dataset:   作業提供的100張圖片</li>
+        </ul>
+      </p>
+    </section>
+
+    <section>
+      <h2>流程</h2>
+      
+      <div class="method-block">
+        <h3>1.標記資料</h3>
+        <p>
+            下載labelImg並標記完所有圖片
+        </p>
+        <img src="../images/YOLO/labelImg.png" alt="labelImg" style="max-width: 100%; border-radius: 10px;">
+        
+      </div>
+
+      <div class="method-block">
+        <h3>2. 決定資料增強參數</h3>
+        <p>
+            條參的重點在想辦法增強模型對小物件(球， 球拍)的準確度，推測是由於樣本數相較其他更少且占據得像素也很小，高速飛行的球相當模糊，肉眼也不好分辨，因此嘗試提高解析度並且多拼貼不同照片，看看能不能有更多球及球拍能訓練。
+        </p>
+        <div class="code-column">
+            <h4>hyper parameter</h4>
+            <div class="code-box">
+<pre><code>hyp_config = {
+    "epochs": 500,          
+    "imgsz": 1280, #從640調到1280，但影響不大         
+    "batch": 8,             
+    "device": 0,            
+    "workers": 2,        
+    "optimizer": "auto",
+    "patience": 50,   
+
+    #做一些輕微旋轉
+    "degrees": 10.0,      
+    "translate": 0.1,       
+    "scale": 0.5,           
+    "shear": 5.0,            
+
+    #拼貼影像，看看能不能有更多小物件的資料
+    "mosaic": 0.8,         
+    "mixup": 0.1,          
+    "copy_paste": 0.2,     
+
+    #資料不可能會出現上下顛到的球桌，所以關閉垂直旋轉
+    "fliplr": 0.5,         
+    "flipud": 0.0,    
+    
+}</code></pre>
+            </div>
+          </div>
+
+      </div>
+    </section> 
+
+    <section>
+    <h2>實作成果</h2>
+    
+    <p>
+        可以看到模型對大物件(球桌，裁判和球員)的正確率相當高，但在小物件(球拍，球)的判定上還是不太準確，可能需要更多訓練資料才能進步。
+    </p> 
+    <img src="../images/YOLO/confusion_matrix.png" alt="confusion_matrix" style="max-width: 100%; border-radius: 10px;">
+    <p>
+    下方是模型訓練過程的 Loss 變化圖，以及最終的辨識結果。
+    </p>
+    <img src="../images/YOLO/results.png" alt="results" style="max-width: 100%; border-radius: 10px;">
+    <img src="../images/YOLO/101.jpg" alt="predict" style="max-width: 100%; border-radius: 10px;">
+
+    <section>
+      <h2>相關資源</h2>
+      <p style="margin-top: 0;">點擊下方按鈕查看完整程式碼或文件。</p>
+      <a href="https://github.com/SSDViggo/ML_code" target="_blank" class="btn">View on GitHub</a>
+    </section> 
+  </div>
+    
+</body>
+</html>
