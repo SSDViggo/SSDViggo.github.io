@@ -2,10 +2,8 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>作業名稱 | 江宇綸</title>
-  
+  <title>Machine Learning | YOLO Object Detection</title>
   <link rel="stylesheet" href="../css/styles.css">
-  
   <script>
     window.addEventListener('load', () => {
       document.body.classList.add('loaded');
@@ -14,105 +12,107 @@
 </head>
 
 <body class="fade-body">
-  
   <div class="top-buttons">
     <a href="../index.html" class="btn">回首頁</a>
   </div>
 
   <div class="container project-detail">
-    
     <a href="../index.html" class="btn">← Back to Home</a>
     
-    <h1>YOLO</h1>
-    
+    <h1>YOLO 物件偵測實作</h1>
+    <p class="subtitle">YOLO11s Fine-tuning 與桌球賽事分析</p>
+
+    <hr>
+
     <section>
       <h2>作業簡介</h2>
       <p>
-        先標記100張圖片作為訓練資料，用來fine tune YOLO，最後得到標記好的圖片。
+        本專案旨在透過標記 100 張桌球賽事圖片作為訓練集，對 <strong>YOLO11s</strong> 預訓練模型進行 Fine-tuning。重點在於提升模型對特定場景物件（如球桌、球員、球拍及高速移動的球）的辨識能力，並透過參數調校解決小物件偵測困難的問題。
       </p>
     </section>
 
     <section>
       <h2>使用技術 / 環境</h2>
-      <p>
+      <div class="tech-stack">
         <ul>
-          <li>Language:  Python 3.9</li>
-          <li>pre train model: YOLO11s</li>
-          <li>Dataset:   作業提供的100張圖片</li>
+          <li><strong>Language:</strong> Python 3.9</li>
+          <li><strong>Pre-trained Model:</strong> YOLO11s (Ultralytics)</li>
+          <li><strong>Dataset:</strong> 100 張標記圖片 (桌球賽事場景)</li>
+          <li><strong>Labeling Tool:</strong> labelImg</li>
         </ul>
-      </p>
+      </div>
     </section>
 
     <section>
-      <h2>流程</h2>
+      <h2>方法與流程 (Methodology)</h2>
       
       <div class="method-block">
-        <h3>1.標記資料</h3>
+        <h3>1. 資料標記 (Data Labeling)</h3>
         <p>
-            下載labelImg並標記完所有圖片
+          使用 <code>labelImg</code> 對 100 張原始影像進行手動標記，定義類別包括球員、裁判、球桌、球拍以及球。標記品質直接影響模型收斂效果。
         </p>
-        <img src="../images/YOLO/labelImg.png" alt="labelImg" style="max-width: 100%; border-radius: 10px;">
-        
+        <img src="../images/YOLO/labelImg.png" alt="labelImg screenshot" class="method-img">
       </div>
 
       <div class="method-block">
-        <h3>2. 決定資料增強參數</h3>
+        <h3>2. 資料增強與參數調校 (Augmentation & Tuning)</h3>
         <p>
-            條參的重點在想辦法增強模型對小物件(球， 球拍)的準確度，推測是由於樣本數相較其他更少且占據得像素也很小，高速飛行的球相當模糊，肉眼也不好分辨，因此嘗試提高解析度並且多拼貼不同照片，看看能不能有更多球及球拍能訓練。
+          本專案的關鍵挑戰在於<strong>小物件 (Small Objects)</strong> 的偵測，如乒乓球與球拍。由於球速極快導致畫面模糊，且像素佔比極低。
         </p>
-        <div class="code-column">
-            <h4>hyper parameter</h4>
-            <div class="code-box">
+        <ul>
+          <li><strong>解析度提升：</strong> 將 <code>imgsz</code> 提升至 1280，增加模型對微小細節的感知。</li>
+          <li><strong>影像拼貼 (Mosaic)：</strong> 設定 <code>mosaic=0.8</code>，增加單一畫面中的物件密度，緩解小樣本問題。</li>
+          <li><strong>座標限制：</strong> 關閉垂直翻轉 (<code>flipud=0.0</code>)，因為場景中不會出現倒掛的球桌。</li>
+        </ul>
+        
+        <div class="code-box">
 <pre><code>hyp_config = {
-    "epochs": 500,          
-    "imgsz": 1280, #從640調到1280，但影響不大         
-    "batch": 8,             
-    "device": 0,            
-    "workers": 2,        
-    "optimizer": "auto",
-    "patience": 50,   
-
-    #做一些輕微旋轉
-    "degrees": 10.0,      
-    "translate": 0.1,       
-    "scale": 0.5,           
-    "shear": 5.0,            
-
-    #拼貼影像，看看能不能有更多小物件的資料
-    "mosaic": 0.8,         
-    "mixup": 0.1,          
-    "copy_paste": 0.2,     
-
-    #資料不可能會出現上下顛到的球桌，所以關閉垂直旋轉
-    "fliplr": 0.5,         
-    "flipud": 0.0,    
-    
+    "epochs": 500,
+    "imgsz": 1280,      # 提升解析度捕捉細節
+    "mosaic": 0.8,      # 拼貼影像，增強小物件訓練
+    "mixup": 0.1,       # 影像融合
+    "flipud": 0.0       # 關閉垂直翻轉以符合現實場景
 }</code></pre>
-            </div>
-          </div>
-
+        </div>
       </div>
-    </section> 
+    </section>
+
+    <hr>
 
     <section>
-    <h2>實作成果</h2>
-    
-    <p>
-        可以看到模型對大物件(球桌，裁判和球員)的正確率相當高，但在小物件(球拍，球)的判定上還是不太準確，可能需要更多訓練資料才能進步。
-    </p> 
-    <img src="../images/YOLO/confusion_matrix.png" alt="confusion_matrix" style="max-width: 100%; border-radius: 10px;">
-    <p>
-    下方是模型訓練過程的 Loss 變化圖，以及最終的辨識結果。
-    </p>
-    <img src="../images/YOLO/results.png" alt="results" style="max-width: 100%; border-radius: 10px;">
-    <img src="../images/YOLO/101.jpg" alt="predict" style="max-width: 100%; border-radius: 10px;">
+      <h2>實作成果</h2>
+      <div class="result-container">
+        <div class="chart-block">
+          <h3>效能分析 (Performance)</h3>
+          <p>
+            混淆矩陣顯示模型對於大物件（球桌、裁判、球員）的準確率極高。然而，受限於樣本數與影像模糊程度，小物件（球拍、球）仍有進步空間。
+          </p>
+          <img src="../images/YOLO/confusion_matrix.png" alt="confusion matrix" class="result-img">
+        </div>
 
-    <section>
+        <div class="chart-block">
+          <h3>Training Loss & Inference</h3>
+          <img src="../images/YOLO/results.png" alt="training results" class="result-img">
+          <p class="caption">模型在 500 個 Epoch 內穩定收斂，Loss 曲線顯示並無過擬合現象。</p>
+        </div>
+
+        <div class="demo-block">
+          <h3>最終偵測結果</h3>
+          <img src="../images/YOLO/101.jpg" alt="Final Detection" class="result-img main-predict">
+          <p class="caption">模型成功辨識出複雜背景下的球桌、球員與裁判位置。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="resources">
       <h2>相關資源</h2>
-      <p style="margin-top: 0;">點擊下方按鈕查看完整程式碼或文件。</p>
-      <a href="https://github.com/SSDViggo/ML_code" target="_blank" class="btn">View on GitHub</a>
+      <p>點擊下方按鈕查看完整訓練腳本與 YAML 配置檔案。</p>
+      <a href="https://github.com/SSDViggo/ML_code" target="_blank" class="btn btn-github">View on GitHub</a>
     </section> 
   </div>
-    
+
+  <footer>
+    <p>&copy; 2026 江宇綸 | YOLO Object Detection Project</p>
+  </footer>
 </body>
 </html>

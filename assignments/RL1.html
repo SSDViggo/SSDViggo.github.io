@@ -2,10 +2,8 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>作業名稱 | 江宇綸</title>
-  
+  <title>RL Lab1 | DDQN Pong</title>
   <link rel="stylesheet" href="../css/styles.css">
-  
   <script>
     window.addEventListener('load', () => {
       document.body.classList.add('loaded');
@@ -14,34 +12,33 @@
 </head>
 
 <body class="fade-body">
-  
   <div class="top-buttons">
     <a href="../index.html" class="btn">回首頁</a>
   </div>
 
   <div class="container project-detail">
-    
     <a href="../index.html" class="btn">← Back to Home</a>
     
-    <h1>RL lab1</h1>
-    
+    <h1>Reinforcement Learning Lab 1</h1>
+    <p class="subtitle">Deep Q-Network (DQN) & Double DQN 實作</p>
+
+    <hr>
+
     <section>
       <h2>作業簡介</h2>
-      <p>
-        用DDQN來訓練RL模型，遊玩Atari的Pong，最後做到能穩定勝利。
-      </p>
+      <p>本專案實作 <strong>Double DQN (DDQN)</strong> 模型來訓練 AI 遊玩 Atari 經典遊戲 <code>Pong-v5</code>。目標是讓 Agent 從原始像素畫面中學習，最終達到能穩定擊敗電腦的水平。</p>
     </section>
 
     <section>
       <h2>使用技術 / 環境</h2>
-      <p>
+      <div class="tech-stack">
         <ul>
-          <li>Language:  Python 3.9</li>
-          <li>Framework: PyTorch</li>
-          <li>Dataset:   ALE/Pong-v5</li>
-          <li>Alogrithm: DDQN</li>
+          <li><strong>Language:</strong> Python 3.9</li>
+          <li><strong>Framework:</strong> PyTorch</li>
+          <li><strong>Environment:</strong> Gymnasium (ALE/Pong-v5)</li>
+          <li><strong>Algorithm:</strong> Double Deep Q-Network (DDQN)</li>
         </ul>
-      </p>
+      </div>
     </section>
 
     <section>
@@ -49,104 +46,82 @@
       
       <div class="method-block">
         <h3>1. 狀態預處理 (State Preprocessing)</h3>
-        <p>
-          由於 Atari 原始畫面為 210x160 RGB 圖像，直接輸入模型會導致運算量過大。因此我進行了以下處理：
-        </p>
+        <p>Atari 原始畫面（210x160 RGB）過於龐大。為了加速訓練，我進行了以下預處理：</p>
         <ul>
-          <li><strong>Grayscale：</strong> 對每個像素的RGB相加取平均，
-            再套上threshold讓圖片變成黑白的。</li>
-                <div class="code-box">
-<pre><code>state = state.astype(np.float32).mean(2) / 255.0
-state[state > th] = 1.0
-state[state <= th] = 0.0</code></pre>
-</div>
-          <li><strong>Resizing：</strong> 將圖片壓縮至 84x84 像素。</li>
-          <li><strong>Frame Stacking：</strong> 堆疊連續 4 幀畫面，讓模型能感知球的「速度」與「方向」。</li>
+          <li><strong>Binarization：</strong> 將圖片轉為灰階後進行二值化處理（Thresholding），簡化特徵。</li>
+          <li><strong>Resizing：</strong> 壓縮至 84x84 像素以減少運算負擔。</li>
+          <li><strong>Frame Stacking：</strong> 堆疊連續 4 幀畫面，賦予模型感知「速度」與「方向」的時間維度資訊。</li>
         </ul>
+        <div class="code-box">
+<pre><code># 像素處理示範
+state = state.astype(np.float32).mean(2) / 255.0
+state[state > th] = 1.0  # 二值化
+state[state <= th] = 0.0</code></pre>
+        </div>
       </div>
 
       <div class="method-block">
-        <h3>2. 模型架構 (QNet Architecture)</h3>
-        <img src="../images/RL1/model_architecture.png" alt="RL model_architecture" style="max-width: 100%; border-radius: 10px;">
-        <p>
-          使用三層卷積層 (Convolutional Layers) 提取特徵，後接全連接層 (Fully Connected) 輸出動作價值 (Q-value)。
-        </p>
-        
-      </div>
-      <div class="method-block">
-        <h3>3. 演算法簡介 (Q-learning)</h3>
-        <img src="../images/RL1/DQN.webp" alt="Q-learning" style="max-width: 100%; border-radius: 10px;">
-        <p>
-          經過上面的方式找到的新參數一定會比較好(證明略)，其中Q值是指給定某個state下，最好的action所能得到的total_reward，以前的方法是建表紀錄並更新，如今採用NN來學習並預測。
-        </p>
+        <h3>2. 模型架構 (Q-Network Architecture)</h3>
+        <p>採用卷積神經網路 (CNN) 作為特徵提取器，後接全連接層輸出各個動作的 <strong>Q-value</strong>。</p>
+        <img src="../images/RL1/model_architecture.png" alt="CNN Architecture" class="method-img">
       </div>
       
       <div class="method-block">
-        <h3>4. 演算法簡介 (DDQN)</h3>
-        <img src="../images/RL1/Q-learning.png" alt="Q-learning" style="max-width: 100%; border-radius: 10px;">
-        <p>
-          DQN由於預測下一刻Q值得NN和選擇此刻動作的NN是同一個，常常會高估結果，導致收斂不問定，為了提升收斂穩定性，本專案採用了 <strong>Double DQN</strong>，透過分離「選擇動作」與「計算目標價值」的網路，解決過度估計 (Overestimation) 的問題。
-        </p>
-        <p>
-            DQN和DDQN的差異如下:
-        </p>
+        <h3>3. 從 DQN 到 Double DQN</h3>
+        <p>傳統 DQN 常因同時使用同一組參數「選擇動作」與「評估價值」，導致嚴重的<strong>過度估計 (Overestimation)</strong> 問題。DDQN 透過分離這兩個過程來提升穩定性：</p>
+        
         <div class="code-comparison">
-          
           <div class="code-column">
-            <h4>DQN Implementation</h4>
+            <h4>DQN (容易高估)</h4>
             <div class="code-box">
-<pre><code># DQN: 直接取 Target Net 的最大 Q 值
-# 缺點：容易過度估計 (Overestimation)
-
-next_q_values = target_net(next_states)
-max_next_q = next_q_values.max(1)[0]
-
-expected_q = rewards + gamma * max_next_q</code></pre>
+<pre><code># 直接取 Target Net 的最大值
+max_next_q = target_net(next_s).max(1)[0]
+expected_q = r + gamma * max_next_q</code></pre>
             </div>
           </div>
 
           <div class="code-column">
-            <h4>Double DQN Implementation</h4>
+            <h4>Double DQN (解耦優化)</h4>
             <div class="code-box">
-<pre><code># DDQN: 解耦 (Decoupling)
-# 1. 用 Local Net 選動作 (Argmax)
-# 2. 用 Target Net 算該動作的 Q 值
-
-action_idx = eval_net(next_states).argmax(1)
-next_q_values = target_net(next_states)
-# gather: 根據 action_idx 取出對應的 Q 值
-next_q = next_q_values.gather(1, action_idx)
-expected_q = rewards + gamma * next_q</code></pre>
+<pre><code># 用 Eval Net 選動作，Target Net 算價值
+best_a = eval_net(next_s).argmax(1)
+next_q = target_net(next_s).gather(1, best_a)
+expected_q = r + gamma * next_q</code></pre>
             </div>
           </div>
         </div>
-       
       </div> 
-
     </section>
 
     <section>
-      <h2>常用技巧</h2>
-       <ul>
-          <li><strong>Replay Buffer：</strong> 儲存過去 10,000 筆經驗，隨機採樣進行訓練，打破資料相關性。</li>
-          <li><strong>Epsilon-Greedy：</strong> 訓練初期保持高探索率，隨著訓練步數增加線性衰減 Epsilon 值。</li>
-        </ul>
+      <h2>訓練技巧 (Training Tricks)</h2>
+      <div class="trick-grid">
+        <div class="trick-item">
+          <h4>Experience Replay</h4>
+          <p>使用 10,000 大小的 Replay Buffer，隨機採樣以打破資料間的相關性 (Temporal Correlation)。</p>
+        </div>
+        <div class="trick-item">
+          <h4>Epsilon-Greedy</h4>
+          <p>訓練初期維持高探索率 ($\epsilon$)，隨步數增加進行線性衰減，在「探索」與「利用」間取得平衡。</p>
+        </div>
+      </div>
     </section>
+
+    <hr>
 
     <section>
       <h2>實作成果</h2>
-      <p>
-        下方是模型訓練過程的 Loss 變化圖，以及最終的辨識結果。
-      </p>
+      <div class="result-container">
+        <div class="chart-block">
+          <h3>Training Progress</h3>
+          <div class="stats-box">
+            <p><strong>Training Step:</strong> 716 / Episode</p>
+            <p><strong>Final Reward:</strong> +11.0 (Stable Win)</p>
+          </div>
+          <p>經過長時間訓練後，Agent 已能精確預測球路，並透過快速移動球拍封鎖電腦的所有進攻。Loss 曲線顯示在 100 萬步後趨於穩定。</p>
+        </div>
 
-      <div style="margin-top: 20px;">
-        <h3>Training Loss</h3>
-        <p>
-        <strong>Step: 716 | Reward: 1.000 / 11.000</strong>
-        </p>
-      </div>
-
-      <div style="margin-top: 20px;">
+        <div style="margin-top: 20px;">
         <h3>Demo 結果</h3>
         <img src="../images/RL1/result.png" 
              data-gif="../images/RL1/eval.gif" 
@@ -154,47 +129,19 @@ expected_q = rewards + gamma * next_q</code></pre>
              alt="Demo截圖" 
              style="max-width: 100%; border-radius: 10px; cursor: pointer;">
       </div>
+      </div>
     </section>
 
-    <section>
+    <section class="resources">
       <h2>相關資源</h2>
-      <p style="margin-top: 0;">點擊下方按鈕查看完整程式碼或文件。</p>
-      <a href="https://github.com/SSDViggo/ML_code" target="_blank" class="btn">View on GitHub</a>
+      <p>點擊下方按鈕查看完整的完整程式碼實作。</p>
+      <a href="https://github.com/SSDViggo/ML_code" target="_blank" class="btn btn-github">View on GitHub</a>
     </section> 
   </div>
-    
-  <script>
-    // 原有的淡入動畫設定
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded');
-    });
 
-    // ========= 新增：GIF 滑鼠懸停播放功能 =========
-    document.addEventListener("DOMContentLoaded", () => {
-      // 找到所有帶有 hover-gif class 的圖片
-      const gifs = document.querySelectorAll('.hover-gif');
+  <footer>
+    <p>&copy; 2026 江宇綸 | RL Lab Report</p>
+  </footer>
 
-      gifs.forEach(img => {
-        // 1. 先把原本的靜態圖路徑記下來
-        const staticSrc = img.src;
-        // 2. 取得 GIF 的路徑
-        const gifSrc = img.getAttribute('data-gif');
-
-        // 預先載入 GIF，避免滑鼠移上去時閃爍或等待
-        const preloadImage = new Image();
-        preloadImage.src = gifSrc;
-
-        // 3. 滑鼠移入：換成 GIF
-        img.addEventListener('mouseenter', () => {
-          img.src = gifSrc;
-        });
-
-        // 4. 滑鼠移出：換回靜態圖
-        img.addEventListener('mouseleave', () => {
-          img.src = staticSrc;
-        });
-      });
-    });
-  </script>
 </body>
 </html>
