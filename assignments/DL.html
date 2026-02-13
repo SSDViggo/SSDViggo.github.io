@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>Deep Learning | MNIST & Autoencoder 實作</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+  </script>
+</head>
+
+<body class="fade-body">
+  <div class="top-buttons">
+    <a href="../index.html" class="btn">回首頁</a>
+  </div>
+
+  <div class="container project-detail">
+    <a href="../index.html" class="btn">← Back to Home</a>
+    
+    <h1>Deep Learning Assignment</h1>
+    <p class="subtitle">基礎 MNIST 辨識與 Denoising Autoencoder 練習</p>
+
+    <hr>
+
+    <section>
+      <h2>作業簡介</h2>
+      <p>
+        本專案從底層實作基礎線性模型 (Linear Model) 來解決經典的 <strong>MNIST</strong> 手寫數字辨識問題，並深入比較 <strong>Deep</strong> 與 <strong>Wide</strong> 兩種網路架構在效能上的差異。此外，進一步實作 <strong>Autoencoder (AE)</strong> 進行影像去噪，嘗試從帶有噪點的圖片中還原出清晰的原圖。
+      </p>
+    </section>
+
+    <section>
+      <h2>使用技術 / 環境</h2>
+      <div class="tech-stack">
+        <ul>
+          <li><strong>Language:</strong> Python 3.9</li>
+          <li><strong>Framework:</strong> PyTorch</li>
+          <li><strong>Dataset:</strong> MNIST</li>
+          <li><strong>Algorithm:</strong> Fully Connected NN, Denoising Autoencoder (AE & CAE)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>實作心得與結果</h2>
+      
+      <div class="method-block">
+        <h3>1. Fully Connected Neural Network</h3>
+        <p>
+          根據作業要求構建了兩組神經網路架構，手動實作正向與反向傳播的計算過程，並比較 <strong>Deep</strong> (深層網路) 與 <strong>Wide</strong> (寬淺層網路) 的準確度表現。
+        </p>
+        <img src="../images/DL/FC_NN_model.png" alt="FC NN Model" class="method-img">
+        <img src="../images/DL/deep_wide_result.png" alt="Deep vs Wide Results" class="method-img">
+        <p>
+          實驗結果顯示，雖然 Deep 網路的擬合能力略強，但在 MNIST 這種特徵較為簡單的資料集上，兩者的最終辨識準確率差異並不明顯。
+        </p>
+      </div>
+
+      <div class="method-block">
+        <h3>2. Autoencoder (AE) 與去噪應用</h3>
+        <p>
+          實作基礎的 Autoencoder 進行影像還原。實驗中先為原始圖片加入高斯噪點，期望模型能學習提取核心特徵並過濾雜訊。
+        </p>
+        <img src="../images/DL/AE_model.png" alt="AE Model" class="method-img">
+        <div class="code-box">
+<pre><code># 為圖片加入高斯雜訊
+noise = np.random.normal(0, 0.35, clean_imgs.shape).astype(np.float32)
+noisy_imgs = np.clip(clean_imgs + noise, 0., 1.)</code></pre>
+        </div>
+        
+        <p>
+          此外，我額外實作了採用卷積架構的 <strong>Convolutional Autoencoder (CAE)</strong> 進行成效對比：
+        </p>
+        <div class="code-box">
+<pre><code># CAE Encoder 部分實作
+self.encoder = nn.Sequential(
+    nn.Conv2d(1, 16, kernel_size=3, stride=2, padding=1), 
+    nn.ReLU(),
+    nn.Conv2d(16, 32, kernel_size=3, stride=2, padding=1),
+    nn.ReLU(),
+)</code></pre>
+        </div>
+        
+        <div class="comparison-results">
+          <img src="../images/DL/AE_result.png" alt="AE Result" class="method-img">
+          <img src="../images/DL/CAE_result.png" alt="CAE Result" class="method-img">
+          <img src="../images/DL/AE_vs_CAE.png" alt="AE vs CAE Comparison" class="method-img">
+        </div>
+        
+        <p>
+          <strong>結論分析：</strong> 兩者在影像還原能力上表現相近。然而在運算效率上，基礎 AE 擁有高達 201,616 個參數，而 CAE 僅需 9,569 個參數。此外，CAE 的訓練時間明顯較短，充分展現了 <strong>CNN</strong> 卷積架構在處理影像數據時，具備參數共享與空間特徵提取的巨大優勢。
+        </p>
+      </div>
+    </section>
+
+    <section class="resources">
+      <h2>相關資源</h2>
+      <p>點擊下方按鈕查看完整程式碼實作與筆記。</p>
+      <a href="https://github.com/SSDViggo/ML_code" target="_blank" class="btn btn-github">View on GitHub</a>
+    </section> 
+  </div>
+
+  <footer>
+    <p>&copy; 2026 江宇綸 | Deep Learning Project Report</p>
+  </footer>
+
+</body>
+</html>
